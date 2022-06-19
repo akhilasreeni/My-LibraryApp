@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row" *ngFor = 'let i of books'>
+        <div class="col-12 mt-3">
+            <div class="card" >
+                <div class="card-horizontal" >
+                    <div class="img-square-wrapper">
+                        <img class="" [src]="i.imageURL">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{i.bookName}}</h4>
+                        <p class="card-text">{{i.authorName}}</p>
+                        <p class="card-text">{{i.description}}</p>
+                        <p class="card-text">Price: Rs: {{i.price}} /-</p>
+                        <button  class="btn btn-outline-primary" style="padding-left: 10px; margin-right: 25px;">Update</button>
+                        <button  class="btn btn-outline-primary">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <br>
+</div>
