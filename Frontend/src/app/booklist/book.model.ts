@@ -5,6 +5,6 @@ export class BookModel{
        public authorName: String,
        public description: String,
        public price: Number,
-       public imageURl: String
+       public imageURL: String
     ) { }
 }

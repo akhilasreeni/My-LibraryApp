@@ -11,4 +11,8 @@ export class BookService {
   getBooks(){
     return this.http.get('http://localhost:3000/books');
   }
+
+  addBooks(item:any){
+    return this.http.post('http://localhost:3000/insert', {item}).subscribe((data) => {console.log(data)});
+  }
 }

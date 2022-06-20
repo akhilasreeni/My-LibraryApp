@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BooklistComponent } from './booklist/booklist.component';
+import { AddbookComponent } from './addbook/addbook.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,12 +14,14 @@ import { BooklistComponent } from './booklist/booklist.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    BooklistComponent, 
+    BooklistComponent,
+    AddbookComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

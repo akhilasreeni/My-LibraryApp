@@ -8,7 +8,7 @@ const Book = new Schema({
     authorName: String,
     description: String,
     price: Number,
-    imageURl: String
+    imageURL: String
 })
 
 const booklist = mongoose.model('book',Book);

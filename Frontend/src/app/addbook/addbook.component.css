@@ -1,0 +1,12 @@
+.formstyle{
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-left: 75px;
+}
+
+.col-form-label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    font-weight: bold;
+    color: rgb(140, 49, 245);
+}
