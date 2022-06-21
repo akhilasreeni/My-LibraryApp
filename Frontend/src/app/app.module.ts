@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { BooklistComponent } from './booklist/booklist.component';
 import { AddbookComponent } from './addbook/addbook.component';
 import { FormsModule } from '@angular/forms';
+import { UpdatebookComponent } from './updatebook/updatebook.component';
 
 
 
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     BooklistComponent,
-    AddbookComponent, 
+    AddbookComponent,
+    UpdatebookComponent, 
   ],
   imports: [
     BrowserModule,

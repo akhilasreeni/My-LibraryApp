@@ -15,6 +15,14 @@ app.get('/books', function(req,res){
     })
 })
 
+app.get('/:id', (req,res)=> {
+    const id = req.params.id;
+    booklist.findOne({"_id" : id})
+    .then((book) => {
+        res.send(book);
+    });
+})
+
 app.post('/insert',function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
@@ -31,6 +39,26 @@ app.post('/insert',function(req,res){
     books.save();
 })
 
+app.put('/update', (req,res) => {
+    console.log(req.body)
+    id=req.body._id,
+    bookId= req.body.bookId,
+    bookName= req.body.bookName,
+    authorName= req.body.authorName,
+    description= req.body.description,
+    price= req.body.price,
+    imageURL= req.body.imageURL
+    booklist.findByIdAndUpdate({"_id":id},
+                                    {$set:{"bookId":bookId,
+                                            "bookName":bookName,
+                                            "authorName":authorName,
+                                            "description":description,
+                                            "price":price,
+                                            "imageURL":imageURL}})
+            .then(function(){
+                res.send();
+            })
+})
 app.listen(3000,()=>{
     console.log("Server up and running in Port 3000");
 })
