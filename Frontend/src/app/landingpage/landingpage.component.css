@@ -1,0 +1,29 @@
+#b1,#b2{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: cursive;
+    border: 2px solid yellowgreen;
+    background: transparent;
+    color: rgb(241, 18, 18);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.content{
+    margin-left: 300px;
+    margin-top: 200px;
+}
+/*
+.firstbg{
+    background-image: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Ym9va3NoZWxmfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 1000px;
+    height: 530px;
+}
+*/

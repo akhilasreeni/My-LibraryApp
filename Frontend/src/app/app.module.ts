@@ -8,6 +8,9 @@ import { BooklistComponent } from './booklist/booklist.component';
 import { AddbookComponent } from './addbook/addbook.component';
 import { FormsModule } from '@angular/forms';
 import { UpdatebookComponent } from './updatebook/updatebook.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -17,7 +20,10 @@ import { UpdatebookComponent } from './updatebook/updatebook.component';
     HeaderComponent,
     BooklistComponent,
     AddbookComponent,
-    UpdatebookComponent, 
+    UpdatebookComponent,
+    LandingpageComponent,
+    LoginComponent,
+    SignupComponent, 
   ],
   imports: [
     BrowserModule,

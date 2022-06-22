@@ -2,6 +2,7 @@ const express= require('express');
 const cors = require('cors');
 const bodyparser = require('body-parser');
 const booklist = require('./src/model/Bookmodel');
+const userlist = require("./src/model/UserModel");
 
 const app = new express;
 app.use(cors());
@@ -35,8 +36,8 @@ app.post('/insert',function(req,res){
         price: req.body.item.price,
         imageURL: req.body.item.imageURL
     }
-    var books = new booklist(book);
-    books.save();
+    var book = new booklist(book);
+    book.save();
 })
 
 app.put('/update', (req,res) => {
@@ -59,6 +60,44 @@ app.put('/update', (req,res) => {
                 res.send();
             })
 })
+
+app.delete('/delete/:id',(req,res)=>{
+   
+    id = req.params.id;
+    booklist.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        res.send();
+    })
+  })
+
+app.post('/login', (req, res) => {
+    let userData = req.body     
+        if (!username) {
+          res.status(401).send('Invalid Username')
+        } 
+        else if ( password !== userData.password) {
+          res.status(401).send('Invalid Password')
+        } else {
+          let payload = {subject: username+password}
+          let token = jwt.sign(payload, 'secretKey')
+          res.status(200).send({token})
+        }
+    })
+
+
+app.post('/signup',function(req,res){
+        res.header("Access-Control-Allow-Origin","*");
+        res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
+        var user = {
+            name: req.body.name,
+            email: req.body.email,  
+            password: req.body.password 
+        }
+        var user = new userlist(user);
+        user.save();
+    })  
+     
 app.listen(3000,()=>{
     console.log("Server up and running in Port 3000");
 })

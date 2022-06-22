@@ -13,7 +13,7 @@
                         <p class="card-text desc">{{i.description}}</p>
                         <p class="card-text">Price: Rs: {{i.price}} /-</p>
                         <button  class="btn btn-outline-primary" (click)="updateBook(books)" style="padding-left: 10px; margin-right: 25px;">Update</button>
-                        <button  class="btn btn-outline-primary" >Delete</button>
+                        <button  class="btn btn-outline-primary" (click)="deleteBook(books)" >Delete</button>
                     </div>
                 </div>
             </div>

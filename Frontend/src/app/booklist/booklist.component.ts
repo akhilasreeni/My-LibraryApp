@@ -25,4 +25,14 @@ export class BooklistComponent implements OnInit {
     this.router.navigate(['update']);
   }
 
+  deleteBook(book:any)
+  {
+    this.bookservice.deleteBook(book._id)
+      .subscribe((data) => {
+        this.books = this.books.filter( p => p !== book);
+      })
+  
+
+  }
+
 }
