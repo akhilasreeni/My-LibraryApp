@@ -1,29 +1,89 @@
-#b1,#b2{
+.btn {
+    text-decoration: none;
+	border: none;
+	font-family: inherit;
+	font-size: small;
     width: 200px;
-    padding: 15px 0;
-    text-align: center;
-    margin: 20px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: x-large;
-    font-family: cursive;
-    border: 2px solid yellowgreen;
-    background: transparent;
-    color: rgb(241, 18, 18);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    height: 50px;
+	color: darkred;
+	background: none;
+	cursor: pointer;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
 }
-.content{
-    margin-left: 300px;
-    margin-top: 200px;
+
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
 }
-/*
-.firstbg{
-    background-image: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Ym9va3NoZWxmfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
-    margin-top: 0px;
-    padding-top: 0px;
-    width: 1000px;
-    height: 530px;
+
+/* Pseudo elements for icons */
+.btn:before,
+.icon-heart:after,
+.icon-star:after,
+.icon-plus:after,
+.icon-file:before {
+	font-family: 'icomoon';
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
 }
-*/
+/* Button 4 */
+.btn-4 {
+    text-decoration: none;
+	border-radius: 50px;
+	border: 2px solid #fff;
+	color: #fff;
+	overflow: hidden;
+}
+
+.btn-4:active {
+	border-color: #f890d0;
+	color: #eea8d3;
+}
+
+.btn-4:hover {
+	background: #f0aacb;
+}
+
+.btn-4:before {
+	position: absolute;
+	height: 100%;
+	font-size: 125%;
+	line-height: 3.5;
+	color: #fff;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn-4:active:before {
+	color: #17954c;
+}
+/* Button 4c */
+.btn-4c:before {
+	left: 70%;
+	opacity: 0;
+	top: 0;
+}
+
+.btn-4c:hover:before {
+	left: 80%;
+	opacity: 1;
+}

@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http:HttpClient) { }
     
   
-  CreateUser(item:any){
-    return this.http.post('http://localhost:3000/signup', {item}).subscribe((data) => {console.log(data)});
+  CreateUser(userItem:any){
+    return this.http.post('http://localhost:3000/signup', {userItem}).subscribe((data) => {console.log(data)});
   }
 }

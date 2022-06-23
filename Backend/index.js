@@ -96,6 +96,7 @@ app.post('/signup',function(req,res){
         }
         var user = new userlist(user);
         user.save();
+        res.send();
     })  
      
 app.listen(3000,()=>{

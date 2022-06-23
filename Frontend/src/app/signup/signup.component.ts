@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
   onSignup(){
     this.authservice.CreateUser(this.userItem);
     alert('User Registration successfull');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']);    
   }
 
 }
