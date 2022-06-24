@@ -7,21 +7,21 @@
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-                  <form (ngSubmit)="onSignup()" #signupform="ngForm">
+                  <form [formGroup]="signupForm">
                     <div class="form-outline mb-4">
-                      <input type="text" id="form3Example1cg" class="form-control form-control-lg" name=uname [(ngModel)]="userItem.name" #uname="ngModel"/>
+                      <input formControlName="name" type="text" id="form3Example1cg" class="form-control form-control-lg" name=uname />
                         <label class="form-label">Your Name</label>
                     </div>
                     <div class="form-outline mb-4">
-                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="uemail" [(ngModel)]="userItem.email" #uemail="ngModel" />
+                      <input formControlName="email" type="email" id="form3Example3cg" class="form-control form-control-lg" name="uemail" />
                       <label class="form-label">Your Email</label>
                     </div>
                     <div class="form-outline mb-4">
-                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="upassword" [(ngModel)]="userItem.password" #upassword="ngModel"/>
+                      <input formControlName="password" type="password" id="form3Example4cg" class="form-control form-control-lg" name="upassword" />
                       <label class="form-label">Password</label>
                     </div>
                     <div class="d-flex justify-content-center">
-                      <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" routerLink="/login">Register</button>
+                      <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="signup()"routerLink="/login">Register</button>
                     </div>
                     <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" class="fw-bold text-body" routerLink="/login"><u>Login here</u></a></p>
                   </form>

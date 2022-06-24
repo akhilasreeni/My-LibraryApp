@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BooklistComponent } from './booklist/booklist.component';
 import { AddbookComponent } from './addbook/addbook.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdatebookComponent } from './updatebook/updatebook.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { LoginComponent } from './login/login.component';
@@ -29,7 +29,8 @@ import { SignupComponent } from './signup/signup.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

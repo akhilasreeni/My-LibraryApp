@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm,Validators,FormControl } from '@angular/forms';
+
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { AuthData } from '../signup/auth-data.model';
@@ -10,6 +11,21 @@ import { AuthData } from '../signup/auth-data.model';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  signupForm:FormGroup = new FormGroup({
+    name:new FormControl (null,Validators.required ),
+    email:new FormControl (null,[Validators.email,Validators.required]),
+    password: new FormControl (null, Validators.required)
+  })
+  signup(){
+    if(!this.signupForm.valid){
+      console.log("Invalid Form");return;
+    }
+    console.log(JSON.stringify(this.signupForm.value));
+  }
+  
+
+
   userItem=new AuthData('','','');
   constructor(private authservice:AuthService,private router:Router) { }
 
