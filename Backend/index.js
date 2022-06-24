@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyparser = require('body-parser');
 const booklist = require('./src/model/Bookmodel');
 const userlist = require("./src/model/UserModel");
-
+const PORT = process.env.PORT || 8080;
 const app = new express;
 app.use(express.static('./dist/frontend'));
 app.use(cors());
@@ -105,6 +105,6 @@ app.post('/api/signup',function(req,res){
         res.send();
     })  
      
-app.listen(3000,()=>{
-    console.log("Server up and running in Port 3000");
+app.listen(PORT,()=>{
+    console.log('Server up and running in Port ${PORT}');
 })
