@@ -1,24 +1,25 @@
 const express= require('express');
-const path= require('path');
+//const path= require('path');
 const cors = require('cors');
 const bodyparser = require('body-parser');
 const booklist = require('./src/model/Bookmodel');
 const userlist = require("./src/model/UserModel");
-const PORT = process.env.PORT || 8080;
+//const PORT = process.env.PORT || 8080;
 const app = new express;
-app.use(express.static('./dist/frontend'));
+//app.use(express.static('./dist/frontend'));
 app.use(cors());
 //middleware
 app.use(bodyparser.json());
 
-app.get('/*',function(req,res){
-    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
-})
+// app.get('/*',function(req,res){
+//     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+// })
 app.get('/books', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     booklist.find()
     .then(function(book){
+        console.log('Booklist from DB read');
         res.send(book);
     })
 })
@@ -102,10 +103,19 @@ app.post('/signup',function(req,res){
             password: req.body.password 
         }
         var user = new userlist(user);
-        user.save();
+        console.log(user);
+        user.save((err,data)=>{
+            if(err){
+              return res.status(401).json({error:"Error saving to DB"});
+            }
+            else{
+              res.json({sucess:"Data saved"});
+            }
+        });
         res.send();
-    })  
-     
-app.listen(PORT,()=>{
-    console.log('Server up and running in Port ${PORT}');
+});  
+    
+
+app.listen(3000,()=>{
+    console.log('Server up and running in Port 3000');
 })

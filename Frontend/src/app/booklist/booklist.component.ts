@@ -16,6 +16,7 @@ export class BooklistComponent implements OnInit {
   constructor(private bookservice:BookService,private router:Router) { }
 
   ngOnInit(): void {
+    console.log('booklist component file');
     this.bookservice.getBooks().subscribe((data) => {
       this.books = JSON.parse(JSON.stringify(data));
     })
