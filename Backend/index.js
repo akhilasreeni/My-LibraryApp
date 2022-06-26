@@ -1,20 +1,26 @@
 const express= require('express');
-//const path= require('path');
+const path= require('path');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const bodyparser = require('body-parser');
 const booklist = require('./src/model/Bookmodel');
 const userlist = require("./src/model/UserModel");
-//const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
+
 const app = new express;
-//app.use(express.static('./dist/frontend'));
+app.use(express.static('./dist/frontend'));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 app.use(cors());
+
 //middleware
 app.use(bodyparser.json());
 
-// app.get('/*',function(req,res){
-//     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
-// })
-app.get('/books', function(req,res){
+app.get('/*',function(req,res){
+     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+})
+
+app.get('/api/books', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     booklist.find()
@@ -24,7 +30,7 @@ app.get('/books', function(req,res){
     })
 })
 
-app.get('/:id', (req,res)=> {
+app.get('/api/:id', (req,res)=> {
     const id = req.params.id;
     booklist.findOne({"_id" : id})
     .then((book) => {
@@ -32,7 +38,7 @@ app.get('/:id', (req,res)=> {
     });
 })
 
-app.post('/insert',function(req,res){
+app.post('/api/insert',function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
 
@@ -48,7 +54,7 @@ app.post('/insert',function(req,res){
     book.save();
 })
 
-app.put('/update', (req,res) => {
+app.put('/api/update', (req,res) => {
     console.log(req.body)
     id=req.body._id,
     bookId= req.body.bookId,
@@ -69,7 +75,7 @@ app.put('/update', (req,res) => {
             })
 })
 
-app.delete('/delete/:id',(req,res)=>{
+app.delete('/api/delete/:id',(req,res)=>{
    
     id = req.params.id;
     booklist.findByIdAndDelete({"_id":id})
@@ -79,7 +85,7 @@ app.delete('/delete/:id',(req,res)=>{
     })
   })
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
     let userData = req.body     
         if (!username) {
           res.status(401).send('Invalid Username')
@@ -94,7 +100,7 @@ app.post('/login', (req, res) => {
     })
 
 
-app.post('/signup',function(req,res){
+app.post('/api/signup',function(req,res){
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
         var user = {
@@ -104,18 +110,22 @@ app.post('/signup',function(req,res){
         }
         var user = new userlist(user);
         console.log(user);
-        user.save((err,data)=>{
+        user.save((err,user)=>{
             if(err){
-              return res.status(401).json({error:"Error saving to DB"});
+                console.log("error saving user to db");
+              //return res.status(401).json({error:"Error saving to DB"});
             }
             else{
-              res.json({sucess:"Data saved"});
+                let payload={subject:user._id};
+                let token = jwt.sign(payload,'secretKey');
+                res.status(200).send({token});
+              //res.json({sucess:"Data saved"});
             }
         });
-        res.send();
+        //res.send();
 });  
     
 
-app.listen(3000,()=>{
-    console.log('Server up and running in Port 3000');
+app.listen(PORT,()=>{
+    console.log('Server up and running in Port');
 })

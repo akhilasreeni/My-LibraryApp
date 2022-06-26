@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthData } from './signup/auth-data.model';
+//import { AuthData } from './signup/auth-data.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,9 @@ export class AuthService {
   constructor(private http:HttpClient) { }
     
   
-  CreateUser(userItem:any){
-    return this.http.post('http://localhost:3000/signup', {userItem}).subscribe((data) => {console.log(data)});
-    //return this.http.post<any>('${this.server_address}/signup', {userItem}).subscribe((data) => {console.log(data)});
+  CreateUser(userItem){
+    //return this.http.post('http://localhost:3000/signup',data);
+    //return this.http.post('http://localhost:3000/signup', {user}).subscribe((data) => {console.log(data)});
+    return this.http.post<any>(`${this.server_address}/signup`, {userItem}).subscribe((data) => {console.log(data)});
   }
 }

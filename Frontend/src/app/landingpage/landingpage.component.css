@@ -54,7 +54,7 @@
 }
 
 .btn-4:active {
-	border-color: #f890d0;
+	border-color: #63eb57;
 	color: #eea8d3;
 }
 
@@ -86,4 +86,11 @@
 .btn-4c:hover:before {
 	left: 80%;
 	opacity: 1;
+}
+.lead{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.display-6{
+	font-weight: bolder;
+	color: blueviolet;
 }
