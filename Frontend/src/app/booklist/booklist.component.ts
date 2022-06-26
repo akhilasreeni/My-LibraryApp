@@ -19,11 +19,12 @@ export class BooklistComponent implements OnInit {
     console.log('booklist component file');
     this.bookservice.getBooks().subscribe((data) => {
       this.books = JSON.parse(JSON.stringify(data));
+      console.log(this.books);
     })
   }
   updateBook(book:any){
     localStorage.setItem("updateBookId", book._id.toString());
-    this.router.navigate(['update']);
+    this.router.navigate(['/update']);
   }
 
   deleteBook(book:any)

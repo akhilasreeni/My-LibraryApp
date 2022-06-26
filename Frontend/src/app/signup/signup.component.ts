@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  signupForm: any;
+
   //validation function only
   signup(){
     if(!this.signupForm.valid){
@@ -18,7 +20,7 @@ export class SignupComponent implements OnInit {
     }
     console.log(JSON.stringify(this.signupForm.value));
   }
-  signupForm :FormGroup;
+
   //userItem=new AuthData('','','');
   constructor(private authservice:AuthService,private router:Router) { }
   
@@ -31,9 +33,10 @@ export class SignupComponent implements OnInit {
   }
   onSignup(signupForm){
     console.log("register button hit");
-    this.authservice.CreateUser(this.signupForm);
+    this.authservice.CreateUser(this.signupForm.value);
     alert('User Registration successfull');
     this.router.navigate(['/login']);    
+  }
   
   
 
