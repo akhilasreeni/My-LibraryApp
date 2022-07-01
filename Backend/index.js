@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bodyparser = require('body-parser');
 const booklist = require('./src/model/Bookmodel');
 const userlist = require("./src/model/UserModel");
-const PORT = process.env.PORT || 8080;
+//const PORT = process.env.PORT || 8080;
 
 const app = new express;
 app.use(express.static('./dist/frontend'));
@@ -16,11 +16,11 @@ app.use(cors());
 //middleware
 app.use(bodyparser.json());
 
-app.get('/*',function(req,res){
-     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
-})
+// app.get('/*',function(req,res){
+//      res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+// })
 
-app.get('/api/books', function(req,res){
+app.get('/books', function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     booklist.find()
@@ -30,7 +30,7 @@ app.get('/api/books', function(req,res){
     })
 })
 
-app.get('/api/:id', (req,res)=> {
+app.get('/:id', (req,res)=> {
     const id = req.params.id;
     booklist.findOne({"_id" : id})
     .then((book) => {
@@ -38,7 +38,7 @@ app.get('/api/:id', (req,res)=> {
     });
 })
 
-app.post('/api/insert',function(req,res){
+app.post(`/insert`,function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
 
@@ -54,7 +54,7 @@ app.post('/api/insert',function(req,res){
     book.save();
 })
 
-app.put('/api/update', (req,res) => {
+app.put('/update', (req,res) => {
     console.log(req.body)
     id=req.body._id,
     bookId= req.body.bookId,
@@ -75,7 +75,7 @@ app.put('/api/update', (req,res) => {
             })
 })
 
-app.delete('/api/delete/:id',(req,res)=>{
+app.delete('/delete/:id',(req,res)=>{
    
     id = req.params.id;
     booklist.findByIdAndDelete({"_id":id})
@@ -85,7 +85,7 @@ app.delete('/api/delete/:id',(req,res)=>{
     })
   })
 
-app.post('/api/login', (req, res) => {
+app.post('/login', (req, res) => {
     let userData = req.body     
         if (!username) {
           res.status(401).send('Invalid Username')
@@ -100,7 +100,7 @@ app.post('/api/login', (req, res) => {
     })
 
 
-app.post('/api/signup',function(req,res){
+app.post('/signup',function(req,res){
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
         var user = {
@@ -126,6 +126,6 @@ app.post('/api/signup',function(req,res){
 });  
     
 
-app.listen(PORT,()=>{
-    console.log('Server up and running in Port');
+app.listen(3000,()=>{
+    console.log(`Server up and running in 3000`);
 })

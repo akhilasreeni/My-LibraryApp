@@ -34,6 +34,7 @@ export class SignupComponent implements OnInit {
   onSignup(signupForm){
     console.log("register button hit");
     this.authservice.CreateUser(this.signupForm.value);
+    console.log(this.signupForm.value);
     alert('User Registration successfull');
     this.router.navigate(['/login']);    
   }

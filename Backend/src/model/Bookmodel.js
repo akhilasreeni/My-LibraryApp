@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://akhilasreeni:MerryChristmas@libraryapp.yxrar.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect('mongodb://localhost:27017/Books');
+//mongoose.connect("mongodb+srv://akhilasreeni:MerryChristmas@libraryapp.yxrar.mongodb.net/?retryWrites=true&w=majority");
 console.log("connected to DB");
 const Schema = mongoose.Schema;
 
